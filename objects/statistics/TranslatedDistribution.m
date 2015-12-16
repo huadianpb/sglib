@@ -124,6 +124,11 @@ classdef TranslatedDistribution < Distribution
             m=TranslatedDistribution.translate_moments(m, tdist.shift, tdist.scale, tdist.center);
             [mean,var,skew,kurt]=deal(m{:});
         end
+        function dist_germ=get_base_dist(tdist)
+            % Get base distribution (corresponding to standard distribution
+            % in the gpc, for which the default polynomial system is orthogonal)
+            dist_germ=get_base_dist(tdist.dist);
+        end
     end
     
     methods (Static)
